@@ -22,7 +22,7 @@ import subprocess
 
 
 
-def scale_pdf(input_path: str, output_path: str, dpi: int = SCALE_DPI) -> str:
+def scale_pdf(input_path: str, output_path: str, dpi: int) -> str:
     """
     Schritt 1: Skaliert PDF mit Ghostscript
     Args:
@@ -53,7 +53,7 @@ def scale_pdf(input_path: str, output_path: str, dpi: int = SCALE_DPI) -> str:
         return output_path
 
 
-def pdf_to_images(pdf_path: str, dpi: int = SCALE_DPI, temp_dir: str = "temp_images") -> tuple:
+def pdf_to_images(pdf_path: str, dpi: int, temp_dir: str = "temp_images") -> tuple:
     """
     Schritt 2: Konvertiert PDF in Bilder
     Args:
@@ -270,7 +270,7 @@ def cleanup(temp_dir: str) -> None:
 
 
 # ========== KONFIGURATION (ANPASSBAR) ==========
-INPUT_PDF = "C:\Users\Anton Admin\Coding\Lecture_Extraction\Robotics-I-Chapter-04-Dynamics Copy.pdf"
+INPUT_PDF = r"C:\Users\Anton Admin\Coding\Lecture_Extraction\Robotics-I-Chapter-04-Dynamics Copy.pdf"
 OUTPUT_DIR = "output"                    # Ausgabeverzeichnis
 SCALE_DPI = 150                          # Ziel-DPI für Skalierung
 
@@ -292,10 +292,10 @@ def main():
     
     # 1. PDF skalieren
     scaled_pdf = f"{OUTPUT_DIR}/scaled_{INPUT_PDF}"
-    scale_pdf(INPUT_PDF, scaled_pdf)
+    scale_pdf(INPUT_PDF, scaled_pdf, SCALE_DPI)
     
     # 2. PDF → Bilder
-    images, temp_dir = pdf_to_images(scaled_pdf)
+    images, temp_dir = pdf_to_images(scaled_pdf, SCALE_DPI)
     
     # 3. Gelbe Seiten erkennen
     yellow_indices = detect_yellow_pages(images, temp_dir)
