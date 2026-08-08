@@ -1,2 +1,6 @@
 /.venv
 /key
+/Originals
+/output
+/src/__pycache__
+
