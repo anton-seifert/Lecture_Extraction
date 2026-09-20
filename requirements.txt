@@ -1,0 +1,16 @@
+# Lecture Extraction — Python dependencies
+# Install with: pip install -r requirements.txt
+
+# PDF processing
+pymupdf          # fitz — PDF to image / PDF reconstruction
+
+# Image processing & OCR
+opencv-python    # left-edge yellow-highlight detection
+pytesseract      # local OCR
+
+# LLM
+google-genai          # Gemini API client (replaces deprecated google-generativeai)
+pydantic              # Typed response schemas for Gemini structured output
+
+# Anki export
+genanki          # Build .apkg flashcard packages
